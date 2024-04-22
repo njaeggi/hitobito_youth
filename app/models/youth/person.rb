@@ -14,6 +14,8 @@ module Youth::Person
   NATIONALITIES_J_S = %w(CH FL ANDERE).freeze
 
   included do
+    Person::SEARCH_ATTRS.push(:ahv_number, :j_s_number)
+
     has_many :people_managers, foreign_key: :managed_id,
                                dependent: :destroy
     has_many :people_manageds, class_name: 'PeopleManager',
